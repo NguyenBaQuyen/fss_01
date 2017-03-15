@@ -123,3 +123,4 @@ Collection.all.each do |collection|
     collection.collections_recipes.create recipe: recipe
   end
 end
+

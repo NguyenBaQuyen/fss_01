@@ -1,37 +1,44 @@
 <table class="table table-striped">
-    <tr>
-      <th><%= t("admin.recipes.id") %></th>
-      <th><%= t("admin.recipes.recipename") %></th>
-      <th><%= t("admin.recipes.author") %></th>
-      <th>
-        <span><%= t("admin.recipes.status") %></span>
-        <%= select_tag ("status"),
-          options_for_select(@statuses, @status_filter),
-          class: "filter_recipes_status",
-          include_blank: true
+  <tr>
+    <th><%= t "admin.recipes.id" %></th>
+    <th><%= t "admin.recipes.recipename" %></th>
+    <th><%= t "admin.recipes.author" %></th>
+    <th>
+      <span><%= t "admin.recipes.status" %></span>
+      <%= select_tag ("status"),
+        options_for_select(@statuses, @status_filter),
+        class: "filter_recipes_status",
+        include_blank: true
+      %>
+    </th>
+    <th><%= t "admin.recipes.send_notification" %></th>
+    <th> <%= t "admin.reports.listreport" %> </th>
+    <th><%= t "admin.recipes.delete" %></th>
+  </tr>
+  <% @recipes.each do |recipe| %>
+    <tr id="recipe-<%= recipe.id %>">
+      <td><%= recipe.id %></td>
+      <td><%= link_to recipe.name , recipe  %></td>
+      <td><%= recipe.user.name %></td>
+      <td>
+        <%= select_tag :status,
+          options_for_select(@statuses, recipe.status),
+          class: "recipe_status", id: recipe.id
         %>
-      </th>
-      <th> <%= t "admin.recipes.listReports" %> </th>
+      </td>
+      <td>
+        <%= link_to t("admin.recipes.send"), new_admin_activity_path(id: recipe.id),
+          class: "btn btn-info", remote: true %>
+      </td>
+      <td>
+        <%= link_to t("admin.recipes.report"), admin_report_path(recipe.id),
+          class: "btn btn-info", remote: true %>
+      </td>
+      <td>
+        <%= link_to t("admin.recipes.delete"), admin_recipe_path(recipe.id),
+          method: :delete, data: {confirm: t("admin.recipes.delete_confirm")},
+          class: "btn btn-danger", remote: true %>
+      </td>
     </tr>
-    <% @recipes.each do |recipe| %>
-      <tr id="recipe-<%= recipe.id %>">
-        <td><%= recipe.id %></td>
-        <td><%= link_to recipe.name , recipe  %></td>
-        <td><%= recipe.user.name %></td>
-        <td>
-          <%= select_tag :status,
-            options_for_select(@statuses, recipe.status),
-            class: "recipe_status", id: recipe.id
-          %>
-        </td>
-        <td>
-          <%= link_to admin_recipe_path(recipe.id), method: :delete,
-            data: {confirm: t("admin.recipes.delete_confirm")}, remote: true do %>
-            <span class="btn btn-danger">
-              <p><%= t "admin.recipes.delete" %></p>
-            </span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+  <% end %>
+</table>

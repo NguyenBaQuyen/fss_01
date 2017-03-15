@@ -3,6 +3,10 @@ class Admin::UserPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def edit?
+    user != record
+  end
+
   def update?
     user.admin?
   end

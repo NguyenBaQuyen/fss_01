@@ -13,7 +13,7 @@
             <%= link_to user.name, user, id: user.id, class: "user_alert" %>
           </td>
           <td>
-            <% unless user.admin? %>
+            <% unless current_user == user %>
               <%= select_tag t("admin.users.role"),
                 options_for_select(@roles, user.role), class: "user_role" %>
             <% end %>
