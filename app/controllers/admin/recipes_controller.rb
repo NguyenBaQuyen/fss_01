@@ -6,11 +6,11 @@ class Admin::RecipesController < AdminController
   def index
     if params.has_key? :filter
       @recipes = Recipe.send(params[:filter]).paginate page: params[:page]
-      authorize [:admin, @recipes]
+      authorize [:admin, current_user]
       @status_filter = params[:filter]
     else
       @recipes = Recipe.paginate page: params[:page]
-      authorize [:admin, @recipes]
+      authorize [:admin, current_user]
     end
     respond_to do |format|
       format.html

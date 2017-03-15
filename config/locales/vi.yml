@@ -53,7 +53,6 @@ vi:
       title_user: "All Users"
       title_recipe: "All Recipes"
       role: "Role"
-
     recipes:
       id: "ID"
       recipename: "Recipename"
@@ -61,6 +60,25 @@ vi:
       status: "Status"
       delete_confirm: "Are you sure?"
       delete: "Delete"
+      recipe_not_found: "Recipe not found"
+      send-notification: "Send Notification"
+    reports:
+      listreport: "List Reports"
+      report: "Report"
+      user_name: "User Name"
+      post: "Post"
+      content: "Content"
+      no_report: "No Report"
+      close: "Close"
+      no_date: "No report found"
+    activities:
+      send_success: "Send Success"
+      send_unsuccess: "Send Unsuccess"
+      send_request: "Send Request!"
+      user_id: "UserID"
+      type_alert: "Type Alert"
+      recipe_url: "Recipe Url"
+      comment: "Comment"
 
   errors:
     error: "Lỗi"

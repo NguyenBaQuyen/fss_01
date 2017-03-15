@@ -1,0 +1,34 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title"><%= t "admin.reports.listreport" %></h4>
+    </div>
+    <div class="modal-body">
+      <% if @reports.empty? %>
+        <p><%= t "admin.reports.no_report" %></p>
+      <% else %>
+        <table class="table table-striped">
+          <tr>
+            <th><%= t "admin.reports.user_name" %></th>
+            <th><%= t "admin.reports.post" %></th>
+            <th><%= t "admin.reports.content" %></th>
+          </tr>
+          <% @reports.each do |report| %>
+            <tr>
+              <td><%= report.user.name %></td>
+              <td><%= report.recipe.name %></td>
+              <td><%= report.content %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t "admin.reports.close" %>
+        </button>
+    </div>
+  </div>
+</div>
