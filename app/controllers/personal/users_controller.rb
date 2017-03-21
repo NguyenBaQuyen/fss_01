@@ -1,7 +1,7 @@
 class Personal::UsersController < PersonalController
+  before_action :sidebar_count, only: [:show, :edit]
+
   def show
-    @recipes_count = current_user.recipes.count
-    @collections_count = current_user.collections.count
   end
 
   def edit

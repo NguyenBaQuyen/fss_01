@@ -15,9 +15,11 @@
     <h1><%= @recipe.name %>
       <div class="pull-right">
         <%= link_to t("recipe.edit"),
-          edit_recipe_path(@recipe) if policy(@recipe).update? %>
+          edit_recipe_path(@recipe),
+          class: "ui primary large basic button" if policy(@recipe).update? %>
         <%= link_to t("recipe.remove"), recipe_path(@recipe),
-          method: :delete if policy(@recipe).destroy? %>
+          method: :delete, data: {confirm: t("confirm")},
+          class: "ui negative large basic button" if policy(@recipe).destroy? %>
       </div>
     </h1>
     <%= render "shared/vote_stars", score: @recipe.votes_average %>

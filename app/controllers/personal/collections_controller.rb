@@ -1,9 +1,9 @@
 class Personal::CollectionsController < PersonalController
   before_action :find_collection, except: [:index, :new, :create]
   before_action :authorize_collection, only: [:update, :destroy]
+  before_action :sidebar_count, only: [:index, :show]
 
   def index
-    @collections = current_user.collections
   end
 
   def show

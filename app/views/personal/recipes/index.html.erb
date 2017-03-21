@@ -1,0 +1,7 @@
+<div class="ui segment">
+  <h1><%= @title %></h1>
+  <%= link_to t("frontend.new_recipe"), new_recipe_path,
+    class: "ui green button" %>
+  <div class="ui divider"></div>
+  <%= render "shared/user_recipes", recipes: @recipes %>
+</div>

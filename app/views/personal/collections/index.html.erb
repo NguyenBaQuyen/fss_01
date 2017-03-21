@@ -5,7 +5,9 @@
   <div class="ui divider"></div>
   <table class="table table-hover" id="table-collections">
     <tbody>
-      <%= render @collections %>
+      <% @sidebar_personal.current_user_collections.each do |collection| %>
+        <%= render "collection", collection: collection %>
+      <% end %>
     </tbody>
   </table>
 </div>

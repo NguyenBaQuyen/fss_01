@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   before_filter :authenticate_user!, except: :show
   before_action :find_recipe, except: [:index, :new, :create]
   before_action :authorize_recipe, except: [:index, :new, :create]
-  before_action :list_recipes, only: [:index, :destroy]
 
   after_action :verify_authorized, except: [:index, :new, :create]
 
@@ -42,10 +41,8 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    respond_to do |format|
-      format.html {redirect_to recipes_path, notice: t("recipe.destroy")}
-      format.js {render layout: false}
-    end
+    flash[:danger] = t "recipe.destroy"
+    redirect_to root_url
   end
 
   private

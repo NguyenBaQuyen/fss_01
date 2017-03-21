@@ -4,19 +4,18 @@
       <%= f.label t "recipe.category" %>
     </div>
     <p><%= t "category.content" %></p>
-    <div class="form-group">
-      <% @category_groups.each do |cate_group| %>
-        <div class="field">
-          <%= f.label cate_group.name %>
-            <%= f.fields_for :categories_recipes,
-            add_new_categories_recipes(f.object,
-            :categories_recipes, cate_group.id) do |ff| %>
-            <%= ff.select :category_id,
-              options_for_select(cate_group.categories.map{|c| [c.name, c.id]},
-              ff.object.category_id) %>
-          <% end %>
-        </div>
-      <% end %>
+    <% @category_groups.each do |cate_group| %>
+      <div class="form-group">
+        <%= f.label cate_group.name %>
+        <%= f.fields_for :categories_recipes,
+          add_new_categories_recipes(f.object,
+          :categories_recipes, cate_group.id) do |ff| %>
+          <%= ff.select :category_id,
+            options_for_select(cate_group.categories.map{|c| [c.name, c.id]},
+            ff.object.category_id), {}, {class: "form-control"} %>
+        <% end %>
+      </div>
+    <% end %>
     </div>
     <div class="form-actions">
       <div class="pull-right">

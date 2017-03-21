@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     namespace :personal do
       root "users#show"
       resources :users, only: [:show, :edit, :update]
-      resources :recipes, only: [:index]
+      resources :recipes, only: [:index, :destroy]
       resources :collections
       resources :collections_recipes, only: [:destroy, :show, :update]
     end
