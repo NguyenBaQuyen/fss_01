@@ -10,7 +10,8 @@
     </div>
     <div class="col-lg-3">
       <%= f.label t "material.unit" %><br>
-      <%= f.text_field :unit, class: "form-control" %>
+      <%= f.select :unit, options_for_select(@unit_values),
+        class: "form-control" %>
     </div>
     <div class="col-lg-1">
       <br/>

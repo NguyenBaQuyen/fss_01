@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   before_filter :authenticate_user!, except: :show
   before_action :find_recipe, except: [:index, :new, :create]
   before_action :authorize_recipe, except: [:index, :new, :create]
+  before_action :find_unit_translates, only: :show
 
   after_action :verify_authorized, except: [:index, :new, :create]
 
@@ -74,5 +75,9 @@ class RecipesController < ApplicationController
       @recipes = current_user.recipes.not_draft
     end
     @recipes_count = current_user.recipes.all
+  end
+
+  def find_unit_translates
+    @unit_translates = UnitTranslation.where locale: params[:locale]
   end
 end

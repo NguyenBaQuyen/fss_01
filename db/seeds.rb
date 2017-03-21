@@ -123,3 +123,13 @@ Collection.all.each do |collection|
     collection.collections_recipes.create recipe: recipe
   end
 end
+
+UnitTranslation.create locale: "en", key: "kilo", value: "Kilogram"
+UnitTranslation.create locale: "en", key: "gram", value: "Gram"
+UnitTranslation.create locale: "en", key: "frut", value: "Frute"
+UnitTranslation.create locale: "en", key: "minigram", value: "Minigram"
+
+UnitTranslation.create locale: "vi", key: "kilo", value: "Cân"
+UnitTranslation.create locale: "vi", key: "gram", value: "Lạng"
+UnitTranslation.create locale: "vi", key: "frut", value: " Quả"
+UnitTranslation.create locale: "vi", key: "minigram", value: "Hoa"

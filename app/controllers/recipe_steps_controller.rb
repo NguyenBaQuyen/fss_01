@@ -4,6 +4,7 @@ class RecipeStepsController < ApplicationController
   steps *Recipe.form_steps
 
   before_action :find_recipe, only: [:show, :update, :finish_wizard_path]
+  before_action :load_unit_values, only: :show
 
   def show
     @category_groups = CategoryGroup.all.includes(:categories)
@@ -40,5 +41,10 @@ class RecipeStepsController < ApplicationController
 
   def finish_wizard_path
     recipe_path @recipe
+  end
+
+  def load_unit_values
+    @unit_translates = UnitTranslation.where locale: params[:locale]
+    @unit_values = @unit_translates.map{|unit| [unit.value, unit.key]}
   end
 end

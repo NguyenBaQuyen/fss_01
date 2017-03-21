@@ -5,7 +5,7 @@
       <span>:</span>
       <%= material.number %>
       <span> </span>
-      <%= material.unit %>
+      <%= (@unit_translates.find_by key: material.unit).value %>
     <% end %>
   </h4>
 </li>

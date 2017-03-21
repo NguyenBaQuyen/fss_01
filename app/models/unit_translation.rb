@@ -1,0 +1,2 @@
+class UnitTranslation < ApplicationRecord
+end
